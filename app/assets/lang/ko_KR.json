@@ -1,0 +1,49 @@
+{
+    "html": {
+        "avatarOverlay": "편집"
+    },
+    "js": {
+        "login": {
+            "error": {
+                "invalidValue": "* 잘못된 값",
+                "requiredValue": "* 필수 항목",
+                "userMigrated": {
+                    "title": "로그인 오류:<br>마이그레이션 된 계정",
+                    "desc": "You've attempted to login with a migrated account. Try again using the account email as the username."
+                },
+                "invalidCredentials": {
+                    "title": "로그인 오류:<br>잘못된 자격 증명",
+                    "desc": "The email or password you've entered is incorrect. Please try again."
+                },
+                "rateLimit": {
+                    "title": "로그인 오류:<br>너무 많은 시도",
+                    "desc": "There have been too many login attempts with this account recently. Please try again later."
+                },
+                "noInternet": {
+                    "title": "로그인 오류:<br>인터넷 연결 없음",
+                    "desc": "You must be connected to the internet in order to login. Please connect and try again."
+                },
+                "authDown": {
+                    "title": "로그인 오류:<br>인증 서버 오프라인",
+                    "desc": "Mojang's authentication server is currently offline or unreachable. Please wait a bit and try again. You can check the status of the server on <a href=\"https://help.mojang.com/\">Mojang's help portal</a>."
+                },
+                "notPaid": {
+                    "title": "로그인 오류:<br>구매되지 않은 게임",
+                    "desc": "The account you are trying to login with has not purchased a copy of Minecraft.<br>You may purchase a copy on <a href=\"https://minecraft.net/\">Minecraft.net</a>"
+                },
+                "unknown": {
+                    "title": "로그인 오류:<br>알 수 없는 오류"
+                }
+            },
+            "login": "로그인",
+            "loggingIn": "로그인 하기",
+            "success": "성공",
+            "tryAgain": "다시 시도해 주세요"
+        },
+        "landing": {
+            "launch": {
+                "pleaseWait": "잠시만 기다려 주세요..."
+            }
+        }
+    }
+}
