@@ -19,37 +19,37 @@ const statuses = [
     {
         service: 'sessionserver.mojang.com',
         status: 'grey',
-        name: 'Multiplayer Session Service',
+        name: '멀티플레이 세션 서비스',
         essential: true
     },
     {
         service: 'authserver.mojang.com',
         status: 'grey',
-        name: 'Authentication Service',
+        name: '인증 서비스',
         essential: true
     },
     {
         service: 'textures.minecraft.net',
         status: 'grey',
-        name: 'Minecraft Skins',
+        name: 'MINECRAFT 스킨',
         essential: false
     },
     {
         service: 'api.mojang.com',
         status: 'grey',
-        name: 'Public API',
+        name: '공개 API',
         essential: false
     },
     {
         service: 'minecraft.net',
         status: 'grey',
-        name: 'Minecraft.net',
+        name: 'MINECRAFT.NET',
         essential: false
     },
     {
         service: 'account.mojang.com',
         status: 'grey',
-        name: 'Mojang Accounts Website',
+        name: 'MOJANG 계정',
         essential: false
     }
 ]

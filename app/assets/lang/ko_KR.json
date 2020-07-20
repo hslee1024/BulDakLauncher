@@ -36,7 +36,7 @@
                 }
             },
             "login": "로그인",
-            "loggingIn": "로그인 하기",
+            "loggingIn": "로그인 중...",
             "success": "성공",
             "tryAgain": "다시 시도해 주세요"
         },

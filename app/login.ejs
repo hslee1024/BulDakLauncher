@@ -8,7 +8,7 @@
     <div id="loginContent">
         <form id="loginForm">
             <img id="loginImageSeal" src="assets/images/SealCircle.png"/>
-            <span id="loginSubheader">MINECRAFT LOGIN</span>
+            <span id="loginSubheader">MINECRAFT 계정으로 로그인</span>
             <div class="loginFieldContainer">
                 <svg id="profileSVG" class="loginSVG" viewBox="40 37 65.36 61.43">
                     <g>
@@ -16,7 +16,7 @@
                     </g>
                 </svg>
                 <span class="loginErrorSpan" id="loginEmailError">* Invalid Value</span>
-                <input id="loginUsername" class="loginField" type="text" placeholder="EMAIL OR USERNAME"/>
+                <input id="loginUsername" class="loginField" type="text" placeholder="이메일 혹은 유저네임"/>
             </div>
             <div class="loginFieldContainer">
                 <svg id="lockSVG" class="loginSVG" viewBox="40 32 60.36 70.43">
@@ -25,21 +25,21 @@
                     </g>
                 </svg>
                 <span class="loginErrorSpan" id="loginPasswordError">* Required</span>
-                <input id="loginPassword" class="loginField" type="password" placeholder="PASSWORD"/>
+                <input id="loginPassword" class="loginField" type="password" placeholder="비밀번호"/>
             </div>
             <div id="loginOptions">
                 <span class="loginSpanDim">
-                    <a href="https://my.minecraft.net/en-us/password/forgot/">forgot password?</a>
+                    <a href="https://my.minecraft.net/en-us/password/forgot/">비밀번호를 잊으셨나요?</a>
                 </span>
                 <label id="checkmarkContainer">
                     <input id="loginRememberOption" type="checkbox" checked>
-                    <span id="loginRememberText" class="loginSpanDim">remember me?</span>
+                    <span id="loginRememberText" class="loginSpanDim">로그인 정보 저장</span>
                     <span class="loginCheckmark"></span>
                 </label>
             </div>
             <button id="loginButton" disabled>
                 <div id="loginButtonContent">
-                    LOGIN
+                    로그인
                     <svg id="loginSVG" viewBox="0 0 24.87 13.97">
                         <defs>
                             <style>.arrowLine{fill:none;stroke:#FFF;stroke-width:2px;transition: 0.25s ease;}</style>
@@ -54,10 +54,10 @@
             </button>
             <div id="loginDisclaimer">
                 <span class="loginSpanDim" id="loginRegisterSpan">
-                    <a href="https://minecraft.net/en-us/store/minecraft/">Need an Account?</a>
+                    <a href="https://minecraft.net/en-us/store/minecraft/">계정이 없으신가요?</a>
                 </span>
-                <p class="loginDisclaimerText">Your password is sent directly to mojang and never stored.</p>
-                <p class="loginDisclaimerText">BulDak Launcher is not affiliated with Mojang AB.</p>
+                <p class="loginDisclaimerText">입력한 개인정보는 안전하게 MOJANG 서버로 전송됩니다.</p>
+                <p class="loginDisclaimerText">BulDak Launcher는 MOJANG AB와 제휴 관계가 아닙니다.</p>
             </div>
         </form>
     </div>
