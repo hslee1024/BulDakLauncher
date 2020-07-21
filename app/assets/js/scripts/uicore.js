@@ -48,7 +48,7 @@ if(!isDev){
                 loggerAutoUpdaterSuccess.log('New update available', info.version)
                 
                 if(process.platform === 'darwin'){
-                    info.darwindownload = `https://github.com/hslee1024/BulDakLauncher/releases/download/v${info.version}/helioslauncher-setup-${info.version}.dmg`
+                    info.darwindownload = `https://github.com/hslee1024/BulDakLauncher/releases/download/v${info.version}/buldaklauncher-setup-${info.version}.dmg`
                     showUpdateUI(info)
                 }
                 
@@ -64,8 +64,8 @@ if(!isDev){
                 showUpdateUI(info)
                 break
             case 'update-not-available':
-                loggerAutoUpdater.log('No new update found.')
-                settingsUpdateButtonStatus('Check for Updates')
+                loggerAutoUpdater.log('새로운 업데이트가 발견되지 않았습니다.')
+                settingsUpdateButtonStatus('업데이트 확인')
                 break
             case 'ready':
                 updateCheckListener = setInterval(() => {

@@ -9,27 +9,27 @@
                 "requiredValue": "* 필수 항목",
                 "userMigrated": {
                     "title": "로그인 오류:<br>마이그레이션 된 계정",
-                    "desc": "You've attempted to login with a migrated account. Try again using the account email as the username."
+                    "desc": "이미 마이그레이션 된 계정으로 로그인을 시도하였습니다. 계정의 이메일 주소로 로그인 해주세요."
                 },
                 "invalidCredentials": {
                     "title": "로그인 오류:<br>잘못된 자격 증명",
-                    "desc": "The email or password you've entered is incorrect. Please try again."
+                    "desc": "입력한 이메일 혹은 비밀번호가 잘못되었습니다. 확인 후, 다시 시도해 주세요."
                 },
                 "rateLimit": {
                     "title": "로그인 오류:<br>너무 많은 시도",
-                    "desc": "There have been too many login attempts with this account recently. Please try again later."
+                    "desc": "최근, 이 계정으로 너무 많은 로그인 시도가 발생하였습니다. 잠시 후에 다시 시도해 주세요."
                 },
                 "noInternet": {
                     "title": "로그인 오류:<br>인터넷 연결 없음",
-                    "desc": "You must be connected to the internet in order to login. Please connect and try again."
+                    "desc": "로그인을 위해 인터넷 연결이 필요합니다. 인터넷 연결 확인 후, 다시 시도해 주세요."
                 },
                 "authDown": {
                     "title": "로그인 오류:<br>인증 서버 오프라인",
-                    "desc": "Mojang's authentication server is currently offline or unreachable. Please wait a bit and try again. You can check the status of the server on <a href=\"https://help.mojang.com/\">Mojang's help portal</a>."
+                    "desc": "MOJANG의 인증 서버가 현재 오프라인 이거나, 접근할 수 없습니다. 잠시 후에 다시 시도해 주세요.<br><br><a href=\"https://help.mojang.com/\">MOJANG 지원 센터</a>에서 현재 MOJANG 서버의 상태를 확인할 수 있습니다.."
                 },
                 "notPaid": {
                     "title": "로그인 오류:<br>구매되지 않은 게임",
-                    "desc": "The account you are trying to login with has not purchased a copy of Minecraft.<br>You may purchase a copy on <a href=\"https://minecraft.net/\">Minecraft.net</a>"
+                    "desc": "MINECRAFT를 구매하지 않은 계정으로 로그인을 시도하였습니다.<br><br><a href=\"https://minecraft.net/\">MINECRAFT.NET</a>에서 MINECRAFT를 구매할 수 있습니다."
                 },
                 "unknown": {
                     "title": "로그인 오류:<br>알 수 없는 오류"
@@ -38,7 +38,7 @@
             "login": "로그인",
             "loggingIn": "로그인 중...",
             "success": "성공",
-            "tryAgain": "다시 시도해 주세요"
+            "tryAgain": "다시 시도"
         },
         "landing": {
             "launch": {

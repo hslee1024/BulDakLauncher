@@ -109,9 +109,9 @@ function showFatalStartupError(){
         $('#loadingContainer').fadeOut(250, () => {
             document.getElementById('overlayContainer').style.background = 'none'
             setOverlayContent(
-                'Fatal Error: Unable to Load Distribution Index',
-                'A connection could not be established to our servers to download the distribution index. No local copies were available to load. <br><br>The distribution index is an essential file which provides the latest server information. The launcher is unable to start without it. Ensure you are connected to the internet and relaunch the application.',
-                'Close'
+                '치명적 오류: 배포 인덱스를 불러올 수 없음',
+                '불닭 서버와 통신할 수 없어, 배포 인덱스를 불러올 수 없습니다. 사용 가능한 로컬 배포 인덱스가 없습니다.<br><br>배포 인덱스는 불닭 런처 실행에 반드시 필요한 파일 입니다. 해당 파일이 없어 런처를 실행할 수 없습니다. 인터넷 연결 확인 후, 런처를 다시 실행해 주세요.',
+                '확인'
             )
             setOverlayHandler(() => {
                 const window = remote.getCurrentWindow()
