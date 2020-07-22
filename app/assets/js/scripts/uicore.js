@@ -27,7 +27,7 @@ window.eval = global.eval = function () {
 // Display warning when devtools window is opened.
 remote.getCurrentWebContents().on('devtools-opened', () => {
     console.log('%cBulDak Laucher DevTools Console', 'color: white; font-size: 50px; font-weight: bold')
-    console.log('%cLauncher Version : 2.0.0-DevBeta-1', 'color: white; font-size: 30px')
+    console.log('%cLauncher Version : 2.0.0', 'color: white; font-size: 30px')
     console.log('%cBulDak Launcher DevTools 콘솔에 오신것을 환영합니다!', 'color: white; font-size: 15px')
     console.log('%c이 콘솔은 오류 보고, 확인 목적으로 활용되는 콘솔입니다.', 'color: white; font-size: 10px')
     console.log('%c실수 혹은 키 조합(Ctrl + Shift + i)을 잘못 눌러서 이 화면을 보고 계신 경우, 우측 상단 X 버튼을 눌러서 이 콘솔을 닫을 수 있습니다.', 'color: white; font-size: 10px')
