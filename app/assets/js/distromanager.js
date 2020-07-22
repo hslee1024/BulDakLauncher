@@ -469,13 +469,6 @@ class DistroIndex {
     }
 
     /**
-     * @returns {string} The URL to the news RSS feed.
-     */
-    getRSS(){
-        return this.rss
-    }
-
-    /**
      * @returns {Array.<Server>} An array of declared server configurations.
      */
     getServers(){
