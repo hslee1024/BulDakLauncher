@@ -1145,7 +1145,7 @@ function populateJavaExecDetails(execPath){
                 settingsJavaExecDetails.innerHTML = `선택됨: Java ${v.version.major}.${v.version.minor}.${v.version.revision} (x${v.arch})`
             }
         } else {
-            settingsJavaExecDetails.innerHTML = 'Invalid Selection'
+            settingsJavaExecDetails.innerHTML = '올바른 실행 가능 Java 런타임이 없습니다'
         }
     })
 }
@@ -1301,7 +1301,7 @@ function populateSettingsUpdateInformation(data){
             settingsUpdateButtonStatus('Downloading..', true)
         }
     } else {
-        settingsUpdateTitle.innerHTML = '최신 릴리즈를 사용중입니다.'
+        settingsUpdateTitle.innerHTML = '최신 릴리즈를 사용중입니다'
         settingsUpdateChangelogCont.style.display = 'none'
         populateVersionInformation(remote.app.getVersion(), settingsUpdateVersionValue, settingsUpdateVersionTitle, settingsUpdateVersionCheck)
         settingsUpdateButtonStatus('업데이트 확인', false, () => {
