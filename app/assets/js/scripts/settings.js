@@ -1140,9 +1140,9 @@ function populateJavaExecDetails(execPath){
     jg._validateJavaBinary(execPath).then(v => {
         if(v.valid){
             if(v.version.major < 9) {
-                settingsJavaExecDetails.innerHTML = `Selected: Java ${v.version.major} Update ${v.version.update} (x${v.arch})`
+                settingsJavaExecDetails.innerHTML = `선택됨: Java ${v.version.major} Update ${v.version.update} (x${v.arch})`
             } else {
-                settingsJavaExecDetails.innerHTML = `Selected: Java ${v.version.major}.${v.version.minor}.${v.version.revision} (x${v.arch})`
+                settingsJavaExecDetails.innerHTML = `선택됨: Java ${v.version.major}.${v.version.minor}.${v.version.revision} (x${v.arch})`
             }
         } else {
             settingsJavaExecDetails.innerHTML = 'Invalid Selection'
@@ -1287,7 +1287,7 @@ function settingsUpdateButtonStatus(text, disabled = false, handler = null){
  */
 function populateSettingsUpdateInformation(data){
     if(data != null){
-        settingsUpdateTitle.innerHTML = `New ${isPrerelease(data.version) ? '프리뷰 릴리즈' : '정식 릴리즈'} 사용 가능`
+        settingsUpdateTitle.innerHTML = `New ${isPrerelease(data.version) ? '베타 릴리즈' : '정식 릴리즈'} 사용 가능`
         settingsUpdateChangelogCont.style.display = null
         settingsUpdateChangelogTitle.innerHTML = data.releaseName
         settingsUpdateChangelogText.innerHTML = data.releaseNotes
