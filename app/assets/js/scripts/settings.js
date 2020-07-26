@@ -1294,11 +1294,11 @@ function populateSettingsUpdateInformation(data){
         populateVersionInformation(data.version, settingsUpdateVersionValue, settingsUpdateVersionTitle, settingsUpdateVersionCheck)
         
         if(process.platform === 'darwin'){
-            settingsUpdateButtonStatus('Download from GitHub<span style="font-size: 10px;color: gray;text-shadow: none !important;">Close the launcher and run the dmg to update.</span>', false, () => {
+            settingsUpdateButtonStatus('Github에서 다운로드<span style="font-size: 10px;color: gray;text-shadow: none !important;"><br>런처를 닫고, .dmg 파일을 실행하여 업데이트를 진행해 주세요.</span>', false, () => {
                 shell.openExternal(data.darwindownload)
             })
         } else {
-            settingsUpdateButtonStatus('Downloading..', true)
+            settingsUpdateButtonStatus('다운로드 중...', true)
         }
     } else {
         settingsUpdateTitle.innerHTML = '최신 릴리즈를 사용중입니다'
@@ -1307,7 +1307,7 @@ function populateSettingsUpdateInformation(data){
         settingsUpdateButtonStatus('업데이트 확인', false, () => {
             if(!isDev){
                 ipcRenderer.send('autoUpdateAction', 'checkForUpdate')
-                settingsUpdateButtonStatus('Checking for Updates..', true)
+                settingsUpdateButtonStatus('업데이트 확인 중...', true)
             }
         })
     }
