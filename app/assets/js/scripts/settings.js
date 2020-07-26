@@ -694,8 +694,8 @@ function bindDropinModsRemoveButton(){
                 document.getElementById(fullName).remove()
             } else {
                 setOverlayContent(
-                    `Failed to Delete<br>Drop-in Mod ${fullName}`,
-                    'Make sure the file is not in use and try again.',
+                    `삭제 실패:<br>${fullName}`,
+                    '모드 파일이 사용중이지 않은지 확인 후 다시 시도해 주세요.',
                     '확인'
                 )
                 setOverlayHandler(null)
@@ -749,7 +749,7 @@ function saveDropinModConfiguration(){
                 DropinModUtil.toggleDropinMod(CACHE_SETTINGS_MODS_DIR, dropin.fullName, dropinUIEnabled).catch(err => {
                     if(!isOverlayVisible()){
                         setOverlayContent(
-                            'Failed to Toggle<br>One or More Drop-in Mods',
+                            '전환 실패:<br>한개 혹은 한개 이상의 모드를 전환할 수 없습니다.',
                             err.message,
                             '확인'
                         )
