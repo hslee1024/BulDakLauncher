@@ -382,9 +382,9 @@ function asyncSystemScan(mcVersion, launchAfter = true){
                 // Oracle JRE enqueue failed. Probably due to a change in their website format.
                 // User will have to follow the guide to install Java.
                 setOverlayContent(
-                    'Unexpected Issue:<br>Java Download Failed',
-                    'Unfortunately we\'ve encountered an issue while attempting to install Java. You will need to manually install a copy. Please check out our <a href="https://github.com/dscalzi/HeliosLauncher/wiki">Troubleshooting Guide</a> for more details and instructions.',
-                    'I Understand'
+                    '알 수 없는 오류:<br>Java 다운로드 실패',
+                    '알 수 없는 이유로 Java 자동 설치에 실패하였습니다. 수동으로 Java를 설치하여야 합니다.더 알아보려면, <a href="https://github.com/dscalzi/HeliosLauncher/wiki">문제 해결 가이드</a>를 참고하세요.',
+                    '알겠습니다'
                 )
                 setOverlayHandler(() => {
                     toggleOverlay(false)
