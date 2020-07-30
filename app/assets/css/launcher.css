@@ -2983,6 +2983,24 @@ input:checked + .toggleSwitchSlider:before {
     fill: #657ac4;
 }
 
+/* Cafe icon colors. */
+#cafeSVG:hover,
+#cafeURL:focus #cafeSVG {
+    fill: #2db400;
+}
+#cafeSVG:active {
+    fill: #2db400;
+}
+
+/* Kakaotalk icon colors. */
+#kakaotalkSVG:hover,
+#kakaotalkURL:focus #kakaotalkSVG {
+    fill: #f7e600;
+}
+#kakaotalkSVG:active {
+    fill: #f7e600;
+}
+
 /*******************************************************************************
  *                                                                             *
  * Landing View (Bottom Styles)                                                *
