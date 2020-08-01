@@ -123,7 +123,7 @@ document.getElementById('avatarOverlay').onclick = (e) => {
 
 // Bind selected account
 function updateSelectedAccount(authUser){
-    let username = 'No Account Selected'
+    let username = '계정이 선택되지 않음'
     if(authUser != null){
         if(authUser.displayName != null){
             username = authUser.displayName
@@ -143,14 +143,14 @@ function updateSelectedServer(serv){
     }
     ConfigManager.setSelectedServer(serv != null ? serv.getID() : null)
     ConfigManager.save()
-    server_selection_button.innerHTML = '\u2022 ' + (serv != null ? serv.getName() : 'No Server Selected')
+    server_selection_button.innerHTML = '\u2022 ' + (serv != null ? serv.getName() : '서버가 선택되지 않음')
     if(getCurrentView() === VIEWS.settings){
         animateModsTabRefresh()
     }
     setLaunchEnabled(serv != null)
 }
 // Real text is set in uibinder.js on distributionIndexDone.
-server_selection_button.innerHTML = '\u2022 Loading..'
+server_selection_button.innerHTML = '\u2022 로딩중...'
 server_selection_button.onclick = (e) => {
     e.target.blur()
     toggleServerSelection(true)
@@ -322,7 +322,7 @@ function asyncSystemScan(mcVersion, launchAfter = true){
                 // Show this information to the user.
                 setOverlayContent(
                     '오류:<br>호환되는 Java가 없습니다',
-                    '불닭 서버에 접속하기 위해서는 64비트 버전의 Java 8 혹은 그 이상이 필요합니다.<br><br>Java를 설치할까요? 설치하면, <a href="http://www.oracle.com/technetwork/java/javase/terms/license/index.html">Oracle의 최종 사용자 계약</a>을 수락하게 됩니다.',
+                    '불닭 서버에 접속하기 위해서는 64비트 버전의 Java 8 혹은 그 이상이 필요합니다.<br><br>Java를 설치할까요?<br>설치하면, <a href="http://www.oracle.com/technetwork/java/javase/terms/license/index.html">Oracle의 최종 사용자 계약</a>을 수락하게 됩니다.',
                     'Java 설치',
                     '수동으로 Java 설치'
                 )
@@ -337,7 +337,7 @@ function asyncSystemScan(mcVersion, launchAfter = true){
                         //$('#overlayDismiss').toggle(false)
                         setOverlayContent(
                             '오류:<br>설치된 Java가 없습니다',
-                            '불닭 서버에 접속하기 위해서는 64비트 버전의 Java 8 혹은 그 이상이 필요합니다.<br><br><a href="https://github.com/dscalzi/HeliosLauncher/wiki/Java-Management#manually-installing-a-valid-version-of-java">Java 관리 가이드</a>에서 수동으로 Java 설치 방법을 확인하세요.',
+                            '불닭 서버에 접속하기 위해서는 64비트 버전의 Java 8 혹은 그 이상이 필요합니다.',
                             '확인',
                             '돌아가기'
                         )
@@ -383,7 +383,7 @@ function asyncSystemScan(mcVersion, launchAfter = true){
                 // User will have to follow the guide to install Java.
                 setOverlayContent(
                     '알 수 없는 오류:<br>Java 다운로드 실패',
-                    '알 수 없는 이유로 Java 자동 설치에 실패하였습니다. 수동으로 Java를 설치하여야 합니다.더 알아보려면, <a href="https://github.com/dscalzi/HeliosLauncher/wiki">문제 해결 가이드</a>를 참고하세요.',
+                    '알 수 없는 이유로 Java 자동 설치에 실패하였습니다. 수동으로 Java를 설치하여야 합니다.',
                     '알겠습니다'
                 )
                 setOverlayHandler(() => {

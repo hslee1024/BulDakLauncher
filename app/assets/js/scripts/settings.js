@@ -1239,7 +1239,7 @@ function populateReleaseNotes(){
         },
         timeout: 2500
     }).catch(err => {
-        settingsAboutChangelogText.innerHTML = '릴리즈 노트를 불러오는 데 실패하였습니다.'
+        /* settingsAboutChangelogText.innerHTML = '릴리즈 노트를 불러오는 데 실패하였습니다.' */
     })
 }
 
