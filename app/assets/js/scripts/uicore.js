@@ -26,18 +26,16 @@ window.eval = global.eval = function () {
 
 // Display warning when devtools window is opened.
 remote.getCurrentWebContents().on('devtools-opened', () => {
-    console.log('%c===FATAL ERROR LOG===', 'font-size: 15px')
     console.log('%cBulDak Laucher DevTools Console', 'font-size: 50px; font-weight: bold')
-    console.log('%cLauncher Version : 2.0.0', 'font-size: 30px')
+    console.log('%cLauncher Version : 2.1.0', 'font-size: 30px')
     console.log('%cBulDak Launcher DevTools 콘솔에 오신것을 환영합니다!', 'font-size: 15px')
-    console.log('%c이 콘솔은 오류 보고, 확인 목적으로 활용되는 콘솔입니다.', 'font-size: 10px')
-    console.log('%c실수 혹은 키 조합(Ctrl + Shift + i)을 잘못 눌러서 이 화면을 보고 계신 경우, 우측 상단 X 버튼을 눌러서 이 콘솔을 닫을 수 있습니다.', 'font-size: 10px')
-    console.log('%c오류 보고, 확인 목적으로 이 콘솔을 의도적으로 여셨을 경우, 아래의 순서를 따라 로그 파일을 올려주세요!', 'font-size: 10px')
-    console.log('%c1. (여기)를 우클릭 하고, 보여지는 메뉴 중, "Save as..."를 눌러 주세요.', 'font-size: 10px')
-    console.log('%c2. 바탕화면, 다운로드 폴더와 같이 찾기 쉬운 폴더에 파일명을 "(닉네임)_(YYYY.MM.DD. (날짜)).log"의 형식으로 저장해 주세요.', 'font-size: 10px')
-    console.log('%c3. 다운로드 한 파일을 공식 디스코드 (https://discord.gg/H5wgeff) 의 불닭서버 런처 > 버그오류보고 채널에 올려주세요.', 'font-size: 10px')
-    console.log('%c보내주신 로그 파일은 BulDak Laucher와 서버의 개선에 큰 도움이 됩니다. 감사합니다 :D')
-    console.log('%c===DevTools Logger START HERE===', 'font-size: 15px')
+    console.log('%c이 콘솔은 오류 보고, 확인 목적으로 활용되는 콘솔입니다.', 'font-size: 15px')
+    console.log('%c실수 혹은 키 조합(Ctrl + Shift + i)을 잘못 눌러서 이 화면을 보고 계신 경우, 우측 상단 X 버튼을 눌러서 이 콘솔을 닫을 수 있습니다.', 'font-size: 15px')
+    console.log('%c오류 보고, 확인 목적으로 이 콘솔을 의도적으로 여셨을 경우, 아래의 순서를 따라 로그 파일을 올려주세요!', 'font-size: 15px')
+    console.log('%c1. (여기)를 우클릭 하고, 보여지는 메뉴 중, "Save as..."를 눌러 주세요.', 'font-size: 15px')
+    console.log('%c2. 바탕화면, 다운로드 폴더와 같이 찾기 쉬운 폴더에 파일명을 "(닉네임)_(YYYY.MM.DD. (날짜)).log"의 형식으로 저장해 주세요.', 'font-size: 15px')
+    console.log('%c3. 다운로드 한 파일을 공식 디스코드 (https://discord.gg/H5wgeff) 의 런처 카테고리 > 런처-오류보고 채널에 올려주세요.', 'font-size: 15px')
+    console.log('%c보내주신 로그 파일은 BulDak Laucher와 서버의 개선에 큰 도움이 됩니다. 감사합니다 :D', 'font-size: 15px')
 })
 
 // Disable zoom, needed for darwin.
