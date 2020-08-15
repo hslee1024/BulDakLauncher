@@ -323,10 +323,10 @@ async function validateSelectedAccount(){
             ConfigManager.save()
             const accLen = Object.keys(ConfigManager.getAuthAccounts()).length
             setOverlayContent(
-                'Failed to Refresh Login',
-                `We were unable to refresh the login for <strong>${selectedAcc.displayName}</strong>. Please ${accLen > 0 ? 'select another account or ' : ''} login again.`,
-                'Login',
-                'Select Another Account'
+                '로그인 정보를 새로고침 하는데 실패하였습니다.',
+                `아래 계정의 로그인 정보를 새로고침 할 수 없습니다.<br><strong>${selectedAcc.displayName}</strong><br>${accLen > 0 ? '다른 계정을 선택하거나, ' : ''}다시 로그인 해주세요.`,
+                '로그인',
+                '다른 계정 선택'
             )
             setOverlayHandler(() => {
                 document.getElementById('loginUsername').value = selectedAcc.username
