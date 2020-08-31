@@ -33,6 +33,6 @@ If you keep the following rules, you can use this software in your own project o
 * Credits is expressly given to the original authors (Daniel Scalzi).
   * Include a link to the original source on the launcher's About page.
   * Credit the authors and provide a link th the original source in any publications or download pages.
-* The source code reamin **public** as a fork of this repository.
+* The source code remain **public** as a fork of this repository.
 
 We reserve the right to update these conditions at any time. Please check back periodically.
