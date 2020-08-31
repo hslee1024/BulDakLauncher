@@ -24,7 +24,7 @@ This is not an exhaustive list. Download and install the launcher to gauge all i
 
 ## Downloads
 
-You can download BulDak Launcher 2.0 from [Official Discord Server]: https://discord.gg/H5wgeff 'Official Discord Server'
+You can download BulDak Launcher 2.0 from Official Discord Server (https://discord.gg/H5wgeff).
 
 ## Note on Third-Party Usage
 
