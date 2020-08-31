@@ -795,9 +795,8 @@ function slide_(up){
     }
 }
 
-//뉴스안쓰는데 주석안하셨네
 // Bind news button.
-/*document.getElementById('newsButton').onclick = () => {
+document.getElementById('newsButton').onclick = () => {
     // Toggle tabbing.
     if(newsActive){
         $('#landingContainer *').removeAttr('tabindex')
@@ -820,14 +819,14 @@ function slide_(up){
 let newsArr = null
 
 // News load animation listener.
-let newsLoadingListener = null*/
+let newsLoadingListener = null
 
 /**
  * Set the news loading animation.
  * 
  * @param {boolean} val True to set loading animation, otherwise false.
  */
-/*function setNewsLoading(val){
+function setNewsLoading(val){
     if(val){
         const nLStr = '공지사항을 확인하는 중'
         let dotStr = '..'
@@ -862,7 +861,7 @@ newsArticleContentScrollable.onscroll = (e) => {
     } else {
         newsContent.removeAttribute('scrolled')
     }
-}*/
+}
 
 /**
  * Reload the news without restarting.
@@ -870,7 +869,7 @@ newsArticleContentScrollable.onscroll = (e) => {
  * @returns {Promise.<void>} A promise which resolves when the news
  * content has finished loading and transitioning.
  */
-/*function reloadNews(){
+function reloadNews(){
     return new Promise((resolve, reject) => {
         $('#newsContent').fadeOut(250, () => {
             $('#newsErrorLoading').fadeIn(250)
@@ -882,7 +881,7 @@ newsArticleContentScrollable.onscroll = (e) => {
 }
 
 let newsAlertShown = false
-*/
+
 /**
  * Show the news alert indicating there is new news.
  */
