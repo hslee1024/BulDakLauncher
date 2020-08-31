@@ -1,3 +1,5 @@
+<p align="center"><img src="./app/assets/images/BDOLogo.png" width="150px" height="150px" alt="BulDak Online"></p>
+
 <h1 align="center"> BulDak Launcher 2.0 </h1>
 
 <em><h5 align="center">(Forked from Helios Launcher, by Daniel Scalzi)</h5></em>
