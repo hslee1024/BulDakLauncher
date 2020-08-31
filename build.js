@@ -62,7 +62,7 @@ builder.build({
         asar: true
     }
 }).then(() => {
-    console.log('Build complete!')
+    console.log('빌드 성공!')
 }).catch(err => {
-    console.error('Error during build!', err)
+    console.error('빌드 도중 오류 발생!', err)
 })

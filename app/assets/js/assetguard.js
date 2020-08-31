@@ -1,4 +1,3 @@
-// Requirements
 const AdmZip        = require('adm-zip')
 const async         = require('async')
 const child_process = require('child_process')
@@ -15,20 +14,8 @@ const ConfigManager = require('./configmanager')
 const DistroManager = require('./distromanager')
 const isDev         = require('./isdev')
 
-// Constants
-// const PLATFORM_MAP = {
-//     win32: '-windows-x64.tar.gz',
-//     darwin: '-macosx-x64.tar.gz',
-//     linux: '-linux-x64.tar.gz'
-// }
-
-// Classes
-
-/** Class representing a base asset. */
 class Asset {
     /**
-     * Create an asset.
-     * 
      * @param {any} id The id of the asset.
      * @param {string} hash The hash value of the asset.
      * @param {number} size The size in bytes of the asset.
@@ -44,12 +31,7 @@ class Asset {
     }
 }
 
-/** Class representing a mojang library. */
 class Library extends Asset {
-
-    /**
-     * Converts the process.platform OS names to match mojang's OS names.
-     */
     static mojangFriendlyOS(){
         const opSys = process.platform
         if (opSys === 'darwin') {
@@ -64,15 +46,6 @@ class Library extends Asset {
     }
 
     /**
-     * Checks whether or not a library is valid for download on a particular OS, following
-     * the rule format specified in the mojang version data index. If the allow property has
-     * an OS specified, then the library can ONLY be downloaded on that OS. If the disallow
-     * property has instead specified an OS, the library can be downloaded on any OS EXCLUDING
-     * the one specified.
-     * 
-     * If the rules are undefined, the natives property will be checked for a matching entry
-     * for the current OS.
-     * 
      * @param {Array.<Object>} rules The Library's download rules.
      * @param {Object} natives The Library's natives object.
      * @returns {boolean} True if the Library follows the specified rules, otherwise false.
@@ -106,10 +79,6 @@ class Library extends Asset {
 class DistroModule extends Asset {
 
     /**
-     * Create a DistroModule. This is for processing,
-     * not equivalent to the module objects in the
-     * distro index.
-     * 
      * @param {any} id The id of the asset.
      * @param {string} hash The hash value of the asset.
      * @param {number} size The size in bytes of the asset.
@@ -124,15 +93,9 @@ class DistroModule extends Asset {
 
 }
 
-/**
- * Class representing a download tracker. This is used to store meta data
- * about a download queue, including the queue itself.
- */
 class DLTracker {
 
     /**
-     * Create a DLTracker
-     * 
      * @param {Array.<Asset>} dlqueue An array containing assets queued for download.
      * @param {number} dlsize The combined size of each asset in the download queue array.
      * @param {function(Asset)} callback Optional callback which is called when an asset finishes downloading.
@@ -148,9 +111,6 @@ class DLTracker {
 class Util {
 
     /**
-     * Returns true if the actual version is greater than
-     * or equal to the desired version.
-     * 
      * @param {string} desired The desired version.
      * @param {string} actual The actual version.
      */
@@ -222,42 +182,6 @@ class JavaGuard extends EventEmitter {
         this.mcVersion = mcVersion
     }
 
-    // /**
-    //  * @typedef OracleJREData
-    //  * @property {string} uri The base uri of the JRE.
-    //  * @property {{major: string, update: string, build: string}} version Object containing version information.
-    //  */
-
-    // /**
-    //  * Resolves the latest version of Oracle's JRE and parses its download link.
-    //  * 
-    //  * @returns {Promise.<OracleJREData>} Promise which resolved to an object containing the JRE download data.
-    //  */
-    // static _latestJREOracle(){
-
-    //     const url = 'https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html'
-    //     const regex = /https:\/\/.+?(?=\/java)\/java\/jdk\/([0-9]+u[0-9]+)-(b[0-9]+)\/([a-f0-9]{32})?\/jre-\1/
-    
-    //     return new Promise((resolve, reject) => {
-    //         request(url, (err, resp, body) => {
-    //             if(!err){
-    //                 const arr = body.match(regex)
-    //                 const verSplit = arr[1].split('u')
-    //                 resolve({
-    //                     uri: arr[0],
-    //                     version: {
-    //                         major: verSplit[0],
-    //                         update: verSplit[1],
-    //                         build: arr[2]
-    //                     }
-    //                 })
-    //             } else {
-    //                 resolve(null)
-    //             }
-    //         })
-    //     })
-    // }
-
     /**
      * @typedef OpenJDKData
      * @property {string} uri The base uri of the JRE.
@@ -266,10 +190,7 @@ class JavaGuard extends EventEmitter {
      */
 
     /**
-     * Fetch the last open JDK binary. Uses https://api.adoptopenjdk.net/
-     * 
      * @param {string} major The major version of Java to fetch.
-     * 
      * @returns {Promise.<OpenJDKData>} Promise which resolved to an object containing the JRE download data.
      */
     static _latestOpenJDK(major = '8'){
@@ -294,9 +215,6 @@ class JavaGuard extends EventEmitter {
     }
 
     /**
-     * Returns the path of the OS-specific executable for the given Java
-     * installation. Supported OS's are win32, darwin, linux.
-     * 
      * @param {string} rootDir The root directory of the Java installation.
      * @returns {string} The path to the Java executable.
      */
@@ -312,8 +230,6 @@ class JavaGuard extends EventEmitter {
     }
 
     /**
-     * Check to see if the given path points to a Java executable.
-     * 
      * @param {string} pth The path to check against.
      * @returns {boolean} True if the path points to a Java executable, otherwise false.
      */
@@ -329,8 +245,6 @@ class JavaGuard extends EventEmitter {
     }
 
     /**
-     * Load Mojang's launcher.json file.
-     * 
      * @returns {Promise.<Object>} Promise which resolves to Mojang's launcher.json object.
      */
     static loadMojangLauncherData(){
@@ -346,10 +260,6 @@ class JavaGuard extends EventEmitter {
     }
 
     /**
-     * Parses a **full** Java Runtime version string and resolves
-     * the version information. Dynamically detects the formatting
-     * to use.
-     * 
      * @param {string} verString Full version string to parse.
      * @returns Object containing the version information.
      */
@@ -363,15 +273,10 @@ class JavaGuard extends EventEmitter {
     }
 
     /**
-     * Parses a **full** Java Runtime version string and resolves
-     * the version information. Uses Java 8 formatting.
-     * 
      * @param {string} verString Full version string to parse.
      * @returns Object containing the version information.
      */
     static _parseJavaRuntimeVersion_8(verString){
-        // 1.{major}.0_{update}-b{build}
-        // ex. 1.8.0_152-b16
         const ret = {}
         let pts = verString.split('-')
         ret.build = parseInt(pts[1].substring(1))
@@ -382,15 +287,10 @@ class JavaGuard extends EventEmitter {
     }
 
     /**
-     * Parses a **full** Java Runtime version string and resolves
-     * the version information. Uses Java 9+ formatting.
-     * 
      * @param {string} verString Full version string to parse.
      * @returns Object containing the version information.
      */
     static _parseJavaRuntimeVersion_9(verString){
-        // {major}.{minor}.{revision}+{build}
-        // ex. 10.0.2+13
         const ret = {}
         let pts = verString.split('+')
         ret.build = parseInt(pts[1])
@@ -402,9 +302,6 @@ class JavaGuard extends EventEmitter {
     }
 
     /**
-     * Validates the output of a JVM's properties. Currently validates that a JRE is x64
-     * and that the major = 8, update > 52.
-     * 
      * @param {string} stderr The output to validate.
      * 
      * @returns {Promise.<Object>} A promise which resolves to a meta object about the JVM.
@@ -436,7 +333,6 @@ class JavaGuard extends EventEmitter {
                 console.log(props[i].trim())
                 const verOb = JavaGuard.parseJavaRuntimeVersion(verString)
                 if(verOb.major < 9){
-                    // Java 8
                     if(verOb.major === 8 && verOb.update > 52){
                         meta.version = verOb
                         ++checksum
@@ -445,14 +341,8 @@ class JavaGuard extends EventEmitter {
                         }
                     }
                 } else {
-                    // Java 9+
                     if(Util.mcVersionAtLeast('1.13', this.mcVersion)){
                         console.log('Java 9+ not yet tested.')
-                        /* meta.version = verOb
-                        ++checksum
-                        if(checksum === goal){
-                            break
-                        } */
                     }
                 }
             }
@@ -464,13 +354,6 @@ class JavaGuard extends EventEmitter {
     }
 
     /**
-     * Validates that a Java binary is at least 64 bit. This makes use of the non-standard
-     * command line option -XshowSettings:properties. The output of this contains a property,
-     * sun.arch.data.model = ARCH, in which ARCH is either 32 or 64. This option is supported
-     * in Java 8 and 9. Since this is a non-standard option. This will resolve to true if
-     * the function's code throws errors. That would indicate that the option is changed or
-     * removed.
-     * 
      * @param {string} binaryExecPath Path to the java executable we wish to validate.
      * 
      * @returns {Promise.<Object>} A promise which resolves to a meta object about the JVM.
@@ -482,17 +365,14 @@ class JavaGuard extends EventEmitter {
             if(!JavaGuard.isJavaExecPath(binaryExecPath)){
                 resolve({valid: false})
             } else if(fs.existsSync(binaryExecPath)){
-                // Workaround (javaw.exe no longer outputs this information.)
                 console.log(typeof binaryExecPath)
                 if(binaryExecPath.indexOf('javaw.exe') > -1) {
                     binaryExecPath.replace('javaw.exe', 'java.exe')
                 }
                 child_process.exec('"' + binaryExecPath + '" -XshowSettings:properties', (err, stdout, stderr) => {
                     try {
-                        // Output is stored in stderr?
                         resolve(this._validateJVMProperties(stderr))
                     } catch (err){
-                        // Output format might have changed, validation cannot be completed.
                         resolve({valid: false})
                     }
                 })
@@ -504,9 +384,6 @@ class JavaGuard extends EventEmitter {
     }
 
     /**
-     * Checks for the presence of the environment variable JAVA_HOME. If it exits, we will check
-     * to see if the value points to a path which exists. If the path exits, the path is returned.
-     * 
      * @returns {string} The path defined by JAVA_HOME, if it exists. Otherwise null.
      */
     static _scanJavaHome(){
@@ -515,27 +392,17 @@ class JavaGuard extends EventEmitter {
             let res = fs.existsSync(jHome)
             return res ? jHome : null
         } catch (err) {
-            // Malformed JAVA_HOME property.
             return null
         }
     }
 
     /**
-     * Scans the registry for 64-bit Java entries. The paths of each entry are added to
-     * a set and returned. Currently, only Java 8 (1.8) is supported.
-     * 
      * @returns {Promise.<Set.<string>>} A promise which resolves to a set of 64-bit Java root
      * paths found in the registry.
      */
     static _scanRegistry(){
 
         return new Promise((resolve, reject) => {
-            // Keys for Java v9.0.0 and later:
-            // 'SOFTWARE\\JavaSoft\\JRE'
-            // 'SOFTWARE\\JavaSoft\\JDK'
-            // Forge does not yet support Java 9, therefore we do not.
-
-            // Keys for Java 1.8 and prior:
             const regKeys = [
                 '\\SOFTWARE\\JavaSoft\\Java Runtime Environment',
                 '\\SOFTWARE\\JavaSoft\\Java Development Kit'
@@ -558,15 +425,11 @@ class JavaGuard extends EventEmitter {
                                 keysDone++
                                 console.error(err)
 
-                                // REG KEY DONE
-                                // DUE TO ERROR
                                 if(keysDone === regKeys.length){
                                     resolve(candidates)
                                 }
                             } else {
                                 if(javaVers.length === 0){
-                                    // REG KEY DONE
-                                    // NO SUBKEYS
                                     keysDone++
                                     if(keysDone === regKeys.length){
                                         resolve(candidates)
@@ -578,15 +441,12 @@ class JavaGuard extends EventEmitter {
                                     for(let j=0; j<javaVers.length; j++){
                                         const javaVer = javaVers[j]
                                         const vKey = javaVer.key.substring(javaVer.key.lastIndexOf('\\')+1)
-                                        // Only Java 8 is supported currently.
                                         if(parseFloat(vKey) === 1.8){
                                             javaVer.get('JavaHome', (err, res) => {
                                                 const jHome = res.value
                                                 if(jHome.indexOf('(x86)') === -1){
                                                     candidates.add(jHome)
                                                 }
-
-                                                // SUBKEY DONE
 
                                                 numDone++
                                                 if(numDone === javaVers.length){
@@ -597,9 +457,6 @@ class JavaGuard extends EventEmitter {
                                                 }
                                             })
                                         } else {
-
-                                            // SUBKEY DONE
-                                            // NOT JAVA 8
 
                                             numDone++
                                             if(numDone === javaVers.length){
@@ -615,9 +472,6 @@ class JavaGuard extends EventEmitter {
                         })
                     } else {
 
-                        // REG KEY DONE
-                        // DUE TO NON-EXISTANCE
-
                         keysDone++
                         if(keysDone === regKeys.length){
                             resolve(candidates)
@@ -631,20 +485,15 @@ class JavaGuard extends EventEmitter {
     }
 
     /**
-     * See if JRE exists in the Internet Plug-Ins folder.
-     * 
      * @returns {string} The path of the JRE if found, otherwise null.
      */
     static _scanInternetPlugins(){
-        // /Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home/bin/java
         const pth = '/Library/Internet Plug-Ins/JavaAppletPlugin.plugin'
         const res = fs.existsSync(JavaGuard.javaExecFromRoot(pth))
         return res ? pth : null
     }
 
     /**
-     * Scan a directory for root JVM folders.
-     * 
      * @param {string} scanDir The directory to scan.
      * @returns {Promise.<Set.<string>>} A promise which resolves to a set of the discovered
      * root JVM folders.
@@ -697,7 +546,6 @@ class JavaGuard extends EventEmitter {
     }
 
     /**
-     * 
      * @param {Set.<string>} rootSet A set of JVM root strings to validate.
      * @returns {Promise.<Object[]>} A promise which resolves to an array of meta objects
      * for each valid JVM root directory.
@@ -724,9 +572,6 @@ class JavaGuard extends EventEmitter {
     }
 
     /**
-     * Sort an array of JVM meta objects. Best candidates are placed before all others.
-     * Sorts based on version and gives priority to JREs over JDKs if versions match.
-     * 
      * @param {Object[]} validArr An array of JVM meta objects.
      * @returns {Object[]} A sorted array of JVM meta objects.
      */
@@ -736,11 +581,9 @@ class JavaGuard extends EventEmitter {
             if(a.version.major === b.version.major){
                 
                 if(a.version.major < 9){
-                    // Java 8
                     if(a.version.update === b.version.update){
                         if(a.version.build === b.version.build){
     
-                            // Same version, give priority to JRE.
                             if(a.execPath.toLowerCase().indexOf('jdk') > -1){
                                 return b.execPath.toLowerCase().indexOf('jdk') > -1 ? 0 : 1
                             } else {
@@ -754,11 +597,8 @@ class JavaGuard extends EventEmitter {
                         return  a.version.update > b.version.update ? -1 : 1
                     }
                 } else {
-                    // Java 9+
                     if(a.version.minor === b.version.minor){
                         if(a.version.revision === b.version.revision){
-    
-                            // Same version, give priority to JRE.
                             if(a.execPath.toLowerCase().indexOf('jdk') > -1){
                                 return b.execPath.toLowerCase().indexOf('jdk') > -1 ? 0 : 1
                             } else {
@@ -782,35 +622,20 @@ class JavaGuard extends EventEmitter {
     }
 
     /**
-     * Attempts to find a valid x64 installation of Java on Windows machines.
-     * Possible paths will be pulled from the registry and the JAVA_HOME environment
-     * variable. The paths will be sorted with higher versions preceeding lower, and
-     * JREs preceeding JDKs. The binaries at the sorted paths will then be validated.
-     * The first validated is returned.
-     * 
-     * Higher versions > Lower versions
-     * If versions are equal, JRE > JDK.
-     * 
      * @param {string} dataDir The base launcher directory.
      * @returns {Promise.<string>} A Promise which resolves to the executable path of a valid 
      * x64 Java installation. If none are found, null is returned.
      */
     async _win32JavaValidate(dataDir){
-
-        // Get possible paths from the registry.
         let pathSet1 = await JavaGuard._scanRegistry()
         if(pathSet1.length === 0){
-            // Do a manual file system scan of program files.
             pathSet1 = JavaGuard._scanFileSystem('C:\\Program Files\\Java')
         }
 
-        // Get possible paths from the data directory.
         const pathSet2 = await JavaGuard._scanFileSystem(path.join(dataDir, 'runtime', 'x64'))
 
-        // Merge the results.
         const uberSet = new Set([...pathSet1, ...pathSet2])
 
-        // Validate JAVA_HOME.
         const jHome = JavaGuard._scanJavaHome()
         if(jHome != null && jHome.indexOf('(x86)') === -1){
             uberSet.add(jHome)
@@ -828,14 +653,6 @@ class JavaGuard extends EventEmitter {
     }
 
     /**
-     * Attempts to find a valid x64 installation of Java on MacOS.
-     * The system JVM directory is scanned for possible installations.
-     * The JAVA_HOME enviroment variable and internet plugins directory
-     * are also scanned and validated.
-     * 
-     * Higher versions > Lower versions
-     * If versions are equal, JRE > JDK.
-     * 
      * @param {string} dataDir The base launcher directory.
      * @returns {Promise.<string>} A Promise which resolves to the executable path of a valid 
      * x64 Java installation. If none are found, null is returned.
@@ -847,16 +664,13 @@ class JavaGuard extends EventEmitter {
 
         const uberSet = new Set([...pathSet1, ...pathSet2])
 
-        // Check Internet Plugins folder.
         const iPPath = JavaGuard._scanInternetPlugins()
         if(iPPath != null){
             uberSet.add(iPPath)
         }
 
-        // Check the JAVA_HOME environment variable.
         let jHome = JavaGuard._scanJavaHome()
         if(jHome != null){
-            // Ensure we are at the absolute root.
             if(jHome.contains('/Contents/Home')){
                 jHome = jHome.substring(0, jHome.indexOf('/Contents/Home'))
             }
@@ -874,13 +688,6 @@ class JavaGuard extends EventEmitter {
     }
 
     /**
-     * Attempts to find a valid x64 installation of Java on Linux.
-     * The system JVM directory is scanned for possible installations.
-     * The JAVA_HOME enviroment variable is also scanned and validated.
-     * 
-     * Higher versions > Lower versions
-     * If versions are equal, JRE > JDK.
-     * 
      * @param {string} dataDir The base launcher directory.
      * @returns {Promise.<string>} A Promise which resolves to the executable path of a valid 
      * x64 Java installation. If none are found, null is returned.
@@ -892,7 +699,6 @@ class JavaGuard extends EventEmitter {
         
         const uberSet = new Set([...pathSet1, ...pathSet2])
 
-        // Validate JAVA_HOME
         const jHome = JavaGuard._scanJavaHome()
         if(jHome != null){
             uberSet.add(jHome)
@@ -909,8 +715,6 @@ class JavaGuard extends EventEmitter {
     }
 
     /**
-     * Retrieve the path of a valid x64 Java installation.
-     * 
      * @param {string} dataDir The base launcher directory.
      * @returns {string} A path to a valid x64 Java installation, null if none found.
      */
@@ -920,24 +724,9 @@ class JavaGuard extends EventEmitter {
 
 }
 
-
-
-
-/**
- * Central object class used for control flow. This object stores data about
- * categories of downloads. Each category is assigned an identifier with a 
- * DLTracker object as its value. Combined information is also stored, such as
- * the total size of all the queued files in each category. This event is used
- * to emit events so that external modules can listen into processing done in
- * this module.
- */
 class AssetGuard extends EventEmitter {
 
     /**
-     * Create an instance of AssetGuard.
-     * On creation the object's properties are never-null default
-     * values. Each identifier is resolved to an empty DLTracker.
-     * 
      * @param {string} commonPath The common path for shared game files.
      * @param {string} javaexec The path to a java executable which will be used
      * to finalize installation.
@@ -956,15 +745,7 @@ class AssetGuard extends EventEmitter {
         this.javaexec = javaexec
     }
 
-    // Static Utility Functions
-    // #region
-
-    // Static Hash Validation Functions
-    // #region
-
     /**
-     * Calculates the hash for a file using the specified algorithm.
-     * 
      * @param {Buffer} buf The buffer containing file data.
      * @param {string} algo The hash algorithm.
      * @returns {string} The calculated hash in hex.
@@ -974,9 +755,6 @@ class AssetGuard extends EventEmitter {
     }
 
     /**
-     * Used to parse a checksums file. This is specifically designed for
-     * the checksums.sha1 files found inside the forge scala dependencies.
-     * 
      * @param {string} content The string content of the checksums file.
      * @returns {Object} An object with keys being the file names, and values being the hashes.
      */
@@ -994,8 +772,6 @@ class AssetGuard extends EventEmitter {
     }
 
     /**
-     * Validate that a file exists and matches a given hash value.
-     * 
      * @param {string} filePath The path of the file to validate.
      * @param {string} algo The hash algorithm to check against.
      * @param {string} hash The existing hash to check against.
@@ -1003,7 +779,6 @@ class AssetGuard extends EventEmitter {
      */
     static _validateLocal(filePath, algo, hash){
         if(fs.existsSync(filePath)){
-            //No hash provided, have to assume it's good.
             if(hash == null){
                 return true
             }
@@ -1015,8 +790,6 @@ class AssetGuard extends EventEmitter {
     }
 
     /**
-     * Validates a file in the style used by forge's version index.
-     * 
      * @param {string} filePath The path of the file to validate.
      * @param {Array.<string>} checksums The checksums listed in the forge version index.
      * @returns {boolean} True if the file exists and the hashes match, otherwise false.
@@ -1038,17 +811,11 @@ class AssetGuard extends EventEmitter {
     }
 
     /**
-     * Validates a forge jar file dependency who declares a checksums.sha1 file.
-     * This can be an expensive task as it usually requires that we calculate thousands
-     * of hashes.
-     * 
      * @param {Buffer} buf The buffer of the jar file.
      * @param {Array.<string>} checksums The checksums listed in the forge version index.
      * @returns {boolean} True if all hashes declared in the checksums.sha1 file match the actual hashes.
      */
     static _validateForgeJar(buf, checksums){
-        // Double pass method was the quickest I found. I tried a version where we store data
-        // to only require a single pass, plus some quick cleanup but that seemed to take slightly more time.
 
         const hashes = {}
         let expected = {}
@@ -1056,7 +823,6 @@ class AssetGuard extends EventEmitter {
         const zip = new AdmZip(buf)
         const zipEntries = zip.getEntries()
 
-        //First pass
         for(let i=0; i<zipEntries.length; i++){
             let entry = zipEntries[i]
             if(entry.entryName === 'checksums.sha1'){
@@ -1069,7 +835,6 @@ class AssetGuard extends EventEmitter {
             return false
         }
 
-        //Check against expected
         const expectedEntries = Object.keys(expected)
         for(let i=0; i<expectedEntries.length; i++){
             if(expected[expectedEntries[i]] !== hashes[expectedEntries[i]]){
@@ -1079,14 +844,7 @@ class AssetGuard extends EventEmitter {
         return true
     }
 
-    // #endregion
-
-    // Miscellaneous Static Functions
-    // #region
-
     /**
-     * Extracts and unpacks a file from .pack.xz format.
-     * 
      * @param {Array.<string>} filePaths The paths of the files to be extracted and unpacked.
      * @returns {Promise.<void>} An empty promise to indicate the extraction has completed.
      */
@@ -1121,11 +879,6 @@ class AssetGuard extends EventEmitter {
     }
 
     /**
-     * Function which finalizes the forge installation process. This creates a 'version'
-     * instance for forge and saves its version.json file into that instance. If that
-     * instance already exists, the contents of the version.json file are read and returned
-     * in a promise.
-     * 
      * @param {Asset} asset The Asset object representing Forge.
      * @param {string} commonPath The common path for shared game files.
      * @returns {Promise.<Object>} A promise which resolves to the contents of forge's version.json.
@@ -1146,28 +899,17 @@ class AssetGuard extends EventEmitter {
                             fs.writeFileSync(path.join(versionPath, forgeVersion.id + '.json'), zipEntries[i].getData())
                             resolve(forgeVersion)
                         } else {
-                            //Read the saved file to allow for user modifications.
                             resolve(JSON.parse(fs.readFileSync(versionFile, 'utf-8')))
                         }
                         return
                     }
                 }
-                //We didn't find forge's version.json.
                 reject('Unable to finalize Forge processing, version.json not found! Has forge changed their format?')
             })
         })
     }
 
-    // #endregion
-
-    // #endregion
-
-    // Validation Functions
-    // #region
-
     /**
-     * Loads the version data for a given minecraft version.
-     * 
      * @param {string} version The game version for which to load the index data.
      * @param {boolean} force Optional. If true, the version index will be downloaded even if it exists locally. Defaults to false.
      * @returns {Promise.<Object>} Promise which resolves to the version data object.
@@ -1179,7 +921,6 @@ class AssetGuard extends EventEmitter {
             const versionFile = path.join(versionPath, version + '.json')
             if(!fs.existsSync(versionFile) || force){
                 const url = await self._getVersionDataUrl(version)
-                //This download will never be tracked as it's essential and trivial.
                 console.log('Preparing download of ' + version + ' assets.')
                 fs.ensureDirSync(versionPath)
                 const stream = request(url).pipe(fs.createWriteStream(versionFile))
@@ -1193,9 +934,6 @@ class AssetGuard extends EventEmitter {
     }
 
     /**
-     * Parses Mojang's version manifest and retrieves the url of the version
-     * data index.
-     * 
      * @param {string} version The version to lookup.
      * @returns {Promise.<string>} Promise which resolves to the url of the version data index.
      * If the version could not be found, resolves to null.
@@ -1220,16 +958,7 @@ class AssetGuard extends EventEmitter {
         })
     }
 
-
-    // Asset (Category=''') Validation Functions
-    // #region
-
     /**
-     * Public asset validation function. This function will handle the validation of assets.
-     * It will parse the asset index specified in the version data, analyzing each
-     * asset entry. In this analysis it will check to see if the local file exists and is valid.
-     * If not, it will be added to the download queue for the 'assets' identifier.
-     * 
      * @param {Object} versionData The version data for the assets.
      * @param {boolean} force Optional. If true, the asset index will be downloaded even if it exists locally. Defaults to false.
      * @returns {Promise.<void>} An empty promise to indicate the async processing has completed.
@@ -1243,10 +972,7 @@ class AssetGuard extends EventEmitter {
         })
     }
 
-    //Chain the asset tasks to provide full async. The below functions are private.
     /**
-     * Private function used to chain the asset validation process. This function retrieves
-     * the index data.
      * @param {Object} versionData
      * @param {boolean} force
      * @returns {Promise.<void>} An empty promise to indicate the async processing has completed.

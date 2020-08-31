@@ -8,10 +8,8 @@ let tracker = new target(...(process.argv.splice(3)))
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
 
-//const tracker = new AssetGuard(process.argv[2], process.argv[3])
 console.log('AssetExec Started')
 
-// Temporary for debug purposes.
 process.on('unhandledRejection', r => console.log(r))
 
 let percent = 0
@@ -39,8 +37,8 @@ assignListeners()
 process.on('message', (msg) => {
     if(msg.task === 'execute'){
         const func = msg.function
-        let nS = tracker[func] // Nonstatic context
-        let iS = target[func] // Static context
+        let nS = tracker[func]
+        let iS = target[func]
         if(typeof nS === 'function' || typeof iS === 'function'){
             const f = typeof nS === 'function' ? nS : iS
             const res = f.apply(f === nS ? tracker : null, msg.argsArr)

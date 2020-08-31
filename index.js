@@ -1,4 +1,3 @@
-// Requirements
 const { app, BrowserWindow, ipcMain, Menu } = require('electron')
 const autoUpdater                   = require('electron-updater').autoUpdater
 const ejse                          = require('ejs-electron')
@@ -8,14 +7,10 @@ const path                          = require('path')
 const semver                        = require('semver')
 const url                           = require('url')
 
-// Setup auto updater.
 function initAutoUpdater(event, data) {
 
     if(data){
         autoUpdater.allowPrerelease = true
-    } else {
-        // Defaults to true if application version contains prerelease components (e.g. 0.12.1-alpha.1)
-        // autoUpdater.allowPrerelease = true
     }
     
     if(isDev){
@@ -42,7 +37,6 @@ function initAutoUpdater(event, data) {
     }) 
 }
 
-// Open channel to listen for update actions.
 ipcMain.on('autoUpdateAction', (event, arg, data) => {
     switch(arg){
         case 'initAutoUpdater':
@@ -76,20 +70,15 @@ ipcMain.on('autoUpdateAction', (event, arg, data) => {
             break
     }
 })
-// Redirect distribution index event from preloader to renderer.
+
 ipcMain.on('distributionIndexDone', (event, res) => {
     event.sender.send('distributionIndexDone', res)
 })
 
-// Disable hardware acceleration.
-// https://electronjs.org/docs/tutorial/offscreen-rendering
 app.disableHardwareAcceleration()
 
-// https://github.com/electron/electron/issues/18397
 app.allowRendererProcessReuse = true
 
-// Keep a global reference of the window object, if you don't, the window will
-// be closed automatically when the JavaScript object is garbage collected.
 let win
 
 function createWindow() {
@@ -115,10 +104,6 @@ function createWindow() {
         slashes: true
     }))
 
-    /*win.once('ready-to-show', () => {
-        win.show()
-    })*/
-
     win.removeMenu()
 
     win.resizable = true
@@ -132,7 +117,6 @@ function createMenu() {
     
     if(process.platform === 'darwin') {
 
-        // Extend default included application menu to continue support for quit keyboard shortcut
         let applicationSubMenu = {
             label: 'Application',
             submenu: [{
@@ -149,7 +133,6 @@ function createMenu() {
             }]
         }
 
-        // New edit menu adds support for text-editing keyboard shortcuts
         let editSubMenu = {
             label: 'Edit',
             submenu: [{
@@ -180,12 +163,9 @@ function createMenu() {
                 selector: 'selectAll:'
             }]
         }
-
-        // Bundle submenus into a single template and build a menu object with it
         let menuTemplate = [applicationSubMenu, editSubMenu]
         let menuObject = Menu.buildFromTemplate(menuTemplate)
 
-        // Assign it to the application
         Menu.setApplicationMenu(menuObject)
 
     }
@@ -212,16 +192,12 @@ app.on('ready', createWindow)
 app.on('ready', createMenu)
 
 app.on('window-all-closed', () => {
-    // On macOS it is common for applications and their menu bar
-    // to stay active until the user quits explicitly with Cmd + Q
     if (process.platform !== 'darwin') {
         app.quit()
     }
 })
 
 app.on('activate', () => {
-    // On macOS it's common to re-create a window in the app when the
-    // dock icon is clicked and there are no other windows open.
     if (win === null) {
         createWindow()
     }
