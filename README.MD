@@ -24,7 +24,15 @@ This is not an exhaustive list. Download and install the launcher to gauge all i
 
 ## Downloads
 
-You can download BulDak Launcher 2.0 from Official Discord Server
+You can download BulDak Launcher 2.0 from [Official Discord Server]: https://discord.gg/H5wgeff 'Official Discord Server'
 
-<iframe src="https://discordapp.com/widget?id=743674663040974928&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+## Note on Third-Party Usage
 
+If you keep the following rules, you can use this software in your own project or server.
+
+* Credits is expressly given to the original authors (Daniel Scalzi).
+  * Include a link to the original source on the launcher's About page.
+  * Credit the authors and provide a link th the original source in any publications or download pages.
+* The source code reamin **public** as a fork of this repository.
+
+We reserve the right to update these conditions at any time. Please check back periodically.
