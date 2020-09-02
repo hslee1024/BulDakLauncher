@@ -86,7 +86,7 @@ function setLaunchEnabled(val){
 
 // Bind launch button
 document.getElementById('launch_button').addEventListener('click', function(e){
-    loggerLanding.log('Launching game..')
+    loggerLanding.log('게임 시작중....')
     const mcVersion = DistroManager.getDistribution().getServer(ConfigManager.getSelectedServer()).getMinecraftVersion()
     const jExe = ConfigManager.getJavaExecutable()
     if(jExe == null){
@@ -99,7 +99,7 @@ document.getElementById('launch_button').addEventListener('click', function(e){
 
         const jg = new JavaGuard(mcVersion)
         jg._validateJavaBinary(jExe).then((v) => {
-            loggerLanding.log('Java version meta', v)
+            loggerLanding.log('자바 버전 meta', v)
             if(v.valid){
                 dlAsync()
             } else {
@@ -160,7 +160,7 @@ server_selection_button.onclick = (e) => {
 
 // Update Mojang Status Color
 const refreshMojangStatuses = async function(){
-    loggerLanding.log('Refreshing Mojang Statuses..')
+    loggerLanding.log('모장 상태 새로고침 중....')
 
     let status = 'grey'
     let tooltipEssentialHTML = ''
@@ -208,7 +208,7 @@ const refreshMojangStatuses = async function(){
         }
 
     } catch (err) {
-        loggerLanding.warn('Unable to refresh Mojang service status.')
+        loggerLanding.warn('모장서버 상태 확인불가')
         loggerLanding.debug(err)
     }
     
@@ -218,7 +218,7 @@ const refreshMojangStatuses = async function(){
 }
 
 const refreshServerStatus = async function(fade = false){
-    loggerLanding.log('Refreshing Server Status')
+    loggerLanding.log('서버 상태 새로고침 중')
     const serv = DistroManager.getDistribution().getServer(ConfigManager.getSelectedServer())
 
     let pLabel = '접속자'
@@ -233,7 +233,7 @@ const refreshServerStatus = async function(fade = false){
         }
 
     } catch (err) {
-        loggerLanding.warn('Unable to refresh server status, assuming offline.')
+        loggerLanding.warn('서버 상태확인이 불가능합니다. 서버가 꺼져있나요?')
         loggerLanding.debug(err)
     }
     if(fade){
@@ -483,7 +483,7 @@ function dlAsync(login = true){
 
     if(login) {
         if(ConfigManager.getSelectedAccount() == null){
-            loggerLanding.error('You must be logged into an account.')
+            loggerLanding.error('계정에 로그인 해야합니다.')
             return
         }
     }
@@ -535,27 +535,27 @@ function dlAsync(login = true){
             switch(m.data){
                 case 'distribution':
                     setLaunchPercentage(20, 100)
-                    loggerLaunchSuite.log('Validated distibution index.')
+                    loggerLaunchSuite.log('배포 인덱스 확인중....')
                     setLaunchDetails('버전 정보를 확인하는 중...')
                     break
                 case 'version':
                     setLaunchPercentage(40, 100)
-                    loggerLaunchSuite.log('Version data loaded.')
+                    loggerLaunchSuite.log('배포 인덱스 로딩')
                     setLaunchDetails('에셋 무결성을 검증하는 중...')
                     break
                 case 'assets':
                     setLaunchPercentage(60, 100)
-                    loggerLaunchSuite.log('Asset Validation Complete')
+                    loggerLaunchSuite.log('에셋 무결성 검증 완료')
                     setLaunchDetails('라이브러리 무결성을 검증하는 중...')
                     break
                 case 'libraries':
                     setLaunchPercentage(80, 100)
-                    loggerLaunchSuite.log('Library validation complete.')
+                    loggerLaunchSuite.log('라이브러리 무결성 검증 완료')
                     setLaunchDetails('기타 파일들의 무결성을 확인하는 중...')
                     break
                 case 'files':
                     setLaunchPercentage(100, 100)
-                    loggerLaunchSuite.log('File validation complete.')
+                    loggerLaunchSuite.log('파일 무결성 확인하는 중....')
                     setLaunchDetails('파일 다운로드 중...')
                     break
             }
@@ -604,7 +604,7 @@ function dlAsync(login = true){
         } else if(m.context === 'error'){
             switch(m.data){
                 case 'download':
-                    loggerLaunchSuite.error('Error while downloading:', m.error)
+                    loggerLaunchSuite.error('다운로드 오류 :', m.error)
                     
                     if(m.error.code === 'ENOENT'){
                         showLaunchFailure(
@@ -630,7 +630,7 @@ function dlAsync(login = true){
 
             // If these properties are not defined it's likely an error.
             if(m.result.forgeData == null || m.result.versionData == null){
-                loggerLaunchSuite.error('Error during validation:', m.result)
+                loggerLaunchSuite.error('유효성 검사 중 오류 발생:', m.result)
 
                 loggerLaunchSuite.error('실행 도중 오류 발생:', m.result.error)
                 showLaunchFailure('실행 도중 오류 발생:', '알 수 없는 오류가 발생하였습니다. 다시 시도해 주세요. 자세한 사항은 DevTools 콘솔(Ctrl + Shift + i)을 확인해 주세요.')
@@ -742,7 +742,7 @@ function dlAsync(login = true){
             serv = data.getServer(ConfigManager.getSelectedServer())
             aEx.send({task: 'execute', function: 'validateEverything', argsArr: [ConfigManager.getSelectedServer(), DistroManager.isDevMode()]})
         }, (err) => {
-            loggerLaunchSuite.error('Unable to refresh distribution index.', err)
+            loggerLaunchSuite.error('배포 인덱스 로드 실패(새로고침)', err)
             if(DistroManager.getDistribution() == null){
                 showLaunchFailure('치명적 오류:', '배포 인덱스를 불러올 수 없습니다. 다시 시도해 주세요. 자세한 사항은 DevTools 콘솔(Ctrl + Shift + i)을 확인해 주세요.')
 
