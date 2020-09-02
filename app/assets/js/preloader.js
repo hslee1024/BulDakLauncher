@@ -31,27 +31,27 @@ function onDistroLoad(data){
 
 // Ensure Distribution is downloaded and cached.
 DistroManager.pullRemote().then((data) => {
-    logger.log('Loaded distribution index.')
+    logger.log('배포 인덱스 로드 완료 ')
 
     onDistroLoad(data)
 
 }).catch((err) => {
-    logger.log('Failed to load distribution index.')
+    logger.log('배포 인덱스를 불러오는 중....')
     logger.error(err)
 
-    logger.log('Attempting to load an older version of the distribution index.')
+    logger.log('이전버전 배포 인덱스를 불러오는중입니다.')
     // Try getting a local copy, better than nothing.
     DistroManager.pullLocal().then((data) => {
-        logger.log('Successfully loaded an older version of the distribution index.')
+        logger.log('이전버전의 배포 인덱스를 불러오는데 성공했습니다.')
 
         onDistroLoad(data)
 
 
     }).catch((err) => {
 
-        logger.log('Failed to load an older version of the distribution index.')
-        logger.log('Application cannot run.')
-        logger.error(err)
+        logger.log('이전버전의 배포 인덱스를 불러오지 못했습니다.')
+        logger.log('런처를 시작할수 없습니다.')
+        logger.error('발생 오류 : '+err)
 
         onDistroLoad(null)
 
