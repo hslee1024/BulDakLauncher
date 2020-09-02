@@ -577,9 +577,10 @@ exports.pullLocal = function(){
 
 exports.setDevMode = function(value){
     if(value){
-        logger.log('개발자 모드가 활성화 되었습니다.')
+        logger.log('Developer mode enabled.')
+        logger.log('If you don\'t know what that means, revert immediately.')
     } else {
-        logger.log('개발자 모드 비활성화')
+        logger.log('Developer mode disabled.')
     }
     DEV_MODE = value
 }

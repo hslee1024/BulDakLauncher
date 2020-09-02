@@ -81,12 +81,12 @@ class ProcessBuilder {
             loggerMCstderr.log(data)
         })
         child.on('close', (code, signal) => {
-            logger.log('종료 코드 :', code)
+            logger.log('Exited with code', code)
             fs.remove(tempNativePath, (err) => {
                 if(err){
-                    logger.warn('임시 파일 삭제실패', err)
+                    logger.warn('Error while deleting temp dir', err)
                 } else {
-                    logger.log('임시 파일 삭제완료.')
+                    logger.log('Temp dir deleted successfully.')
                 }
             })
         })
