@@ -96,8 +96,8 @@ exports.status = function(){
             function(error, response, body){
 
                 if(error || response.statusCode !== 200){
-                    logger.warn('모장 상태를 확인하지 못했습니다.')
-                    logger.debug('모장 상태를 확인하는중 오류가발생했습니다.', error)
+                    logger.warn('Unable to retrieve Mojang status.')
+                    logger.debug('Error while retrieving Mojang statuses:', error)
                     //reject(error || response.statusCode)
                     for(let i=0; i<statuses.length; i++){
                         statuses[i].status = 'grey'
