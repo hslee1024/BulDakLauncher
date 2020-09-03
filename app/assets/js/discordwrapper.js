@@ -1,9 +1,4 @@
 // Work in progress
-/*
-추후 사용되면 좋을거같은 기능이라 추가는해뒀으나 주석처리했습니다.
-사용법은 다음과같습니다.
- DiscordWrapper.updateDetails('게임 로딩 중...') (설명수정)
- 기본 포함기능이니 알거라고믿고 여기까지만 하겠습니다.
 const logger = require('./loggerutil')('%c[DiscordWrapper]', 'color: #7289da; font-weight: bold')
 
 const {Client} = require('discord-rpc')
@@ -50,4 +45,4 @@ exports.shutdownRPC = function(){
     client.destroy()
     client = null
     activity = null
-}*/
+}
