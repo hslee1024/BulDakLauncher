@@ -6,6 +6,8 @@ const cp                      = require('child_process')
 const crypto                  = require('crypto')
 const {URL}                   = require('url')
 
+//Discord RPC PR수정
+const DiscordWrapper          = require('./assets/js/discordwrapper')
 // Internal Requirements
 const Mojang                  = require('./assets/js/mojang')
 const ProcessBuilder          = require('./assets/js/processbuilder')
@@ -458,6 +460,8 @@ function asyncSystemScan(mcVersion, launchAfter = true){
 
 // Keep reference to Minecraft Process
 let proc
+// Is DiscordRPC enabled
+//let hasRPC = false
 // Joined server regex
 // Change this if your server uses something different.
 const SERVER_JOINED_REGEX = /\[.+\]: \[CHAT\] [a-zA-Z0-9_]{1,16} joined the game/
@@ -645,6 +649,9 @@ function dlAsync(login = true){
 
                 const onLoadComplete = () => {
                     toggleLaunchArea(false)
+                    /*if(hasRPC){
+                        DiscordWrapper.updateDetails('게임 로딩 중...')
+                    }*/
                     proc.stdout.on('data', gameStateChange)
                     proc.stdout.removeListener('data', tempListener)
                     proc.stderr.removeListener('data', gameErrorListener)
@@ -665,6 +672,15 @@ function dlAsync(login = true){
                         }
                     }
                 }
+                // Listener for Discord RPC.
+                /*const gameStateChange = function(data){
+                    data = data.trim()
+                    if(SERVER_JOINED_REGEX.test(data)){
+                        DiscordWrapper.updateDetails('불닭 온라인 플레이 중')
+                    } else if(GAME_JOINED_REGEX.test(data)){
+                        DiscordWrapper.updateDetails('불닭 온라인 플레이 중')
+                    }
+                }*/
 
                 const gameErrorListener = function(data){
                     data = data.trim()
@@ -684,6 +700,18 @@ function dlAsync(login = true){
 
                     setLaunchDetails('실행 준비 완료!')
 
+                    // Init Discord Hook
+                    /*const distro = DistroManager.getDistribution()
+                    if(distro.discord != null && serv.discord != null){
+                        DiscordWrapper.initRPC(distro.discord, serv.discord)
+                        hasRPC = true
+                        proc.on('close', (code, signal) => {
+                            loggerLaunchSuite.log('Shutting down Discord Rich Presence..')
+                            DiscordWrapper.shutdownRPC()
+                            hasRPC = false
+                            proc = null
+                        })
+                    }*/
                 } catch(err) {
 
                     loggerLaunchSuite.error('실행 도중 오류 발생:', err)
