@@ -159,7 +159,8 @@ server_selection_button.onclick = (e) => {
 }
 
 // Update Mojang Status Color
-const refreshMojangStatuses = async function(){
+// Disable Mojang Status
+/*const refreshMojangStatuses = async function(){
     loggerLanding.log('Refreshing Mojang Statuses..')
 
     let status = 'grey'
@@ -215,7 +216,7 @@ const refreshMojangStatuses = async function(){
     document.getElementById('mojangStatusEssentialContainer').innerHTML = tooltipEssentialHTML
     document.getElementById('mojangStatusNonEssentialContainer').innerHTML = tooltipNonEssentialHTML
     document.getElementById('mojang_status_icon').style.color = Mojang.statusToHex(status)
-}
+}*/
 
 const refreshServerStatus = async function(fade = false){
     loggerLanding.log('Refreshing Server Status')
