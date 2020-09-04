@@ -250,11 +250,11 @@ const refreshServerStatus = async function(fade = false){
     
 }
 
-refreshMojangStatuses()
+//refreshMojangStatuses()
 // Server Status is refreshed in uibinder.js on distributionIndexDone.
 
 // Set refresh rate to once every 5 minutes.
-let mojangStatusListener = setInterval(() => refreshMojangStatuses(true), 300000)
+//let mojangStatusListener = setInterval(() => refreshMojangStatuses(true), 300000)
 let serverStatusListener = setInterval(() => refreshServerStatus(true), 300000)
 
 /**
