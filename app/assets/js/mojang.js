@@ -15,7 +15,7 @@ const minecraftAgent = {
     version: 1
 }
 const authpath = 'https://authserver.mojang.com'
-const statuses = [
+/*const statuses = [
     {
         service: 'sessionserver.mojang.com',
         status: 'grey',
@@ -52,7 +52,7 @@ const statuses = [
         name: 'MOJANG 계정',
         essential: false
     }
-]
+]*/
 
 // Functions
 
@@ -86,7 +86,11 @@ exports.statusToHex = function(status){
  * 
  * @see http://wiki.vg/Mojang_API#API_Status
  */
-exports.status = function(){
+
+ /**
+  * Disalbe Mojang Status
+  */
+/* exports.status = function(){
     return new Promise((resolve, reject) => {
         request.get('https://status.mojang.com/check',
             {
@@ -118,7 +122,7 @@ exports.status = function(){
                 }
             })
     })
-}
+}*/
 
 /**
  * Authenticate a user with their Mojang credentials.
