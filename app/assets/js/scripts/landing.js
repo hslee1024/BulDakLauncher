@@ -173,6 +173,10 @@ const refreshMojangStatuses = async function(){
 
         for(let i=0; i<statuses.length; i++){
             const service = statuses[i]
+            //Bug Fix
+            if(service.service === 'sessionserver.mojang.com' || service.service === 'minecraft.net') {
+                service.status = 'green'
+            }
 
             if(service.essential){
                 tooltipEssentialHTML += `<div class="mojangStatusContainer">
